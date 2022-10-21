@@ -4,7 +4,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 
 ```zsh
-pnpm run dev
+pnpm run dev 
 ```
 
 If you are not using pnpm, first, you should:
