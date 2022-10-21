@@ -1,14 +1,18 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## How to run this application
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
+```zsh
+pnpm run dev
 ```
+
+If you are not using pnpm, first, you should:
+```zsh
+brew install pnpm
+```
+
+If not, you have to run the installation seperately and delete the pnpm-lock file
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
