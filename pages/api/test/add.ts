@@ -1,5 +1,4 @@
 import connectMongo from '../../../utils/connectMongo';
-import Test from '../../../models/testModel';
 import Option from '../../../models/optionModel';
 
 /**
