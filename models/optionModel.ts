@@ -15,7 +15,6 @@ const optionSchema = new Schema({
   openInterest: Number,
   volume: Number,
   inTheMoney: Boolean,
-  
 
 });
 

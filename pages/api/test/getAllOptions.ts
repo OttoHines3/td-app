@@ -1,7 +1,16 @@
 import axios from "axios";
+import { noSSR } from "next/dynamic";
 import {breakDownData} from "../../../utils/breakDownData"
+
+const dataReady = false;
   
 export async function getOptionData() {
+    //get Date for API call
+    let date: Date = new Date();
+    let x = date.getMonth() + 2;
+    const dateStr = String(date.getFullYear()) + '-' + String(x) + '-' + String(date.getDate());
+    console.log(dateStr);
+
     // Fetch data from external API
     const options = {
         method: 'GET',
@@ -9,8 +18,8 @@ export async function getOptionData() {
         params: {
             apikey: '',
             symbol: 'IWM',
-            strikeCount: '10',
-            toDate: '2022-11-4',
+            strikeCount: '20',
+            toDate: dateStr,
             contractType: 'ALL'
 
         },
@@ -20,18 +29,24 @@ export async function getOptionData() {
             'Content-Type': 'application/json'
         }//headers
     };//options
+
+
 //to save the search parameters for the next time the user searches
    let p2= {
         symbol: 'IWM',
-        strikeCount: '10',
-        toDate: '2022-11-4',
+        strikeCount: '20',
+        toDate: dateStr,
         contractType: 'ALL'
     }//end p2
 
+   
     const res = await axios.request(options);
 
     const data = await res.data;
-    const altData = breakDownData(data, p2);
+    let altData;
+
+    altData = breakDownData(data,p2);
+
     return altData;
 }//end of getOptionData
 

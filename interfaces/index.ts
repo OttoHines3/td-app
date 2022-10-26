@@ -5,5 +5,7 @@ export interface OptionVar {
     openIntrest: number;
     volume: number;
     inTheMoney: boolean;
-  
+    newOINumber: number;
+    openIntrestChange: number;
+
   }

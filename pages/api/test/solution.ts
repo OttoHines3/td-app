@@ -5,13 +5,13 @@ import { NextApiRequest, NextApiResponse } from 'next';
  * @param {import('next').NextApiRequest} req
  * @param {import('next').NextApiResponse} res
  **/
-
-let lastSearch : any = getPastOps(null, null);
+let res : any = {};
+export
+let lastSearch : any = getPastOps(null, res);
 
 const data = Object.keys(lastSearch).map((key) => {
     return lastSearch[key]
 })
 
-const {info} = data[0];
 
-console.log(info);
+console.log(data);

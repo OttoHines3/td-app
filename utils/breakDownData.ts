@@ -5,7 +5,8 @@ import {detectDuplicates} from "./detectDuplicates"
   let FINALCALLARR : OptionVar[] = [];
   let FINALPUTARR : OptionVar[] =[];
  
- 
+ const dataReady = false;
+
  //Break down the data from thinkorswim API
  export function breakDownData(data: any, params: any){
     const { callExpDateMap } = data
@@ -24,12 +25,12 @@ import {detectDuplicates} from "./detectDuplicates"
       const callStrikePrices = Object.keys(callExpiries[i]).map((key) => {
         return callExpiries[i][key]
       })//end of callStrikePrices
-      
+
       for (let j : number = 0; j < Object.keys(callStrikePrices).length; j++) {
         const optionData = Object.keys(callStrikePrices[0]).map((key) => {
           return callStrikePrices[j][key]  
         })//end of optionData
-          let tempOption: OptionVar = {optionName:"temp", openIntrest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp"}
+          let tempOption: OptionVar = {optionName:"temp", openIntrest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openIntrestChange: -1};
           tempOption.optionName = optionData[0].description;
           tempOption.openIntrest = optionData[0].openInterest;
           tempOption.volume = optionData[0].totalVolume;
@@ -51,7 +52,7 @@ import {detectDuplicates} from "./detectDuplicates"
         const optionData = Object.keys(putStrikePrices[0]).map((key) => {
           return putStrikePrices[j][key]
         })//end of optionData
-          let tempOption: OptionVar = {optionName:"temp", openIntrest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp"}
+          let tempOption: OptionVar = {optionName:"temp", openIntrest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openIntrestChange: -1}
           tempOption.optionName = optionData[0].description;
           tempOption.openIntrest = optionData[0].openInterest;
           tempOption.volume = optionData[0].totalVolume;
