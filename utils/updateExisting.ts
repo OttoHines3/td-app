@@ -29,8 +29,13 @@ export async function updateExisting() {
        }//end of if
         
     }//end of for
-   
-    const solution ={currCallInfo, currPutInfo, params};
 
-    return solution;
+    //combine arrays
+    let finalArr = currCallInfo.concat(currPutInfo);
+   
+    // const solution ={currCallInfo, currPutInfo};
+
+     
+
+    return finalArr;
 }//end of updateExisting

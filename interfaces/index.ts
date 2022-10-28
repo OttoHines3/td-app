@@ -9,3 +9,4 @@ export interface OptionVar {
     openIntrestChange: number;
 
   }
+

@@ -16,7 +16,7 @@ export async function getOptionData() {
         method: 'GET',
         baseURL: 'https://api.tdameritrade.com/v1/marketdata/chains',
         params: {
-            apikey: '',
+            apikey: 'RQRUTEVH7G7QUR20Z7ITJYUEZRKTRAPD',
             symbol: 'IWM',
             strikeCount: '20',
             toDate: dateStr,
