@@ -1,9 +1,13 @@
 import { OptionVar } from '../interfaces'
 import React, {useMemo, useEffect, useState} from 'react'
-import { useTable, useSortBy } from 'react-table'
+import { useTable } from 'react-table'
 import axios from 'axios'
-import styled from 'styled-components'
-
+import {
+  createColumnHelper,
+  flexRender,
+  getCoreRowModel,
+  useReactTable,
+} from '@tanstack/react-table'
 
 type Props ={
   data: OptionVar[];
@@ -13,11 +17,14 @@ const columns = [
   {
     Header: 'Option Name', 
     accessor: 'optionName' as keyof OptionVar, 
-    sortType: 'alphanumeric'
   },
   {
     Header: 'Option Symbol',
     accessor: 'optionSymbol' as keyof OptionVar,
+  },
+  {
+    Header: 'Volume',
+    accessor: 'volume' as keyof OptionVar,
   },
   {
     Header: 'Yesterday Open Interest',
@@ -27,52 +34,27 @@ const columns = [
   {
     Header: 'Today\'s Open Interest',
     accessor: 'newOINumber' as keyof OptionVar,
-    sortType: 'alphanumeric',
   },
   {
     Header: 'Open Interest Change',
     accessor: 'openInterestChange' as keyof OptionVar,
-    sortType: 'alphanumeric',
   },
   {
-    Header: 'Volume',
-    accessor: 'volume' as keyof OptionVar,
-    sortType: 'alphanumeric',
-  },
-  {
-    Header: 'In the Money',
+    Header: 'in the Money',
     accessor: 'inTheMoney' as keyof OptionVar,
-    sortType: 'basic',
   },
 ];//end columns
 
 function Table(props: Props){
   const data = useMemo(() => props.data, [props.data])
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow 
-  } = useTable(
-    { 
-      columns , 
-      data 
-    },
-    useSortBy,
-    );
-    
-  return<table style={{ border: 'solid 1px blue' }}>
+  } = useTable({ columns , data });
+  return<table>
     <thead>
       {headerGroups.map(headerGroup => (
         <tr {...headerGroup.getHeaderGroupProps()}>
-          {headerGroup.headers.map((column : any) => (
-            <th {...column.getHeaderProps(column.getSortByToggleProps())} style={{
-              borderBottom: 'solid 3px blue',
-              background: 'green',
-              color: 'white',
-              fontWeight: 'bold',
-              padding: '10px',
-            }}>{column.render('Header')}
-             <span>
-                {column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}
-              </span>
-            </th>
+          {headerGroup.headers.map(column => (
+            <th {...column.getHeaderProps()}>{column.render('Header')}</th>
           ))}
         </tr>
       ))}
@@ -83,13 +65,7 @@ function Table(props: Props){
         return (
           <tr {...row.getRowProps()}>
             {row.cells.map(cell => {
-              return <td {...cell.getCellProps()} style={{
-                padding: '30px',
-                textAlign: 'center',
-                background: '#fff',
-                border: 'solid 1px blue',
-                borderSpacing : '3px',
-              }}>{cell.render('Cell')}</td>
+              return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>
             })}
           </tr>
         )
@@ -113,9 +89,7 @@ function App(){
   return(
     
     <div>
-      <div>
-        {data.length > 0 ? <Table data={data}/> : <div>loading...</div>}
-      </div>
+      {data.length > 0 ? <Table data={data}/> : <div>loading...</div>}
     </div>
      
   );

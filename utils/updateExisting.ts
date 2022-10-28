@@ -19,13 +19,13 @@ export async function updateExisting() {
 
     for (let i = 0; i < currCallInfo.length; i++) {
        if(currCallInfo[i].optionSymbol == newCallInfo[i].optionSymbol) {
-           currCallInfo[i].openIntrestChange = newCallInfo[i].openIntrest - currCallInfo[i].openIntrest;
-           currCallInfo[i].newOINumber = newCallInfo[i].openIntrest;
+           currCallInfo[i].openIntrestChange = newCallInfo[i].openInterest - currCallInfo[i].openIntrest;
+           currCallInfo[i].newOINumber = newCallInfo[i].openInterest;
        }//end of if
 
        if(currPutInfo[i].optionSymbol == newPutInfo[i].optionSymbol) {
-           currPutInfo[i].openIntrestChange = newPutInfo[i].openIntrest - currPutInfo[i].openIntrest;
-           currPutInfo[i].newOINumber = newPutInfo[i].openIntrest;
+           currPutInfo[i].openIntrestChange = newPutInfo[i].openInterest - currPutInfo[i].openIntrest;
+           currPutInfo[i].newOINumber = newPutInfo[i].openInterest;
        }//end of if
         
     }//end of for

@@ -30,9 +30,9 @@ import {detectDuplicates} from "./detectDuplicates"
         const optionData = Object.keys(callStrikePrices[0]).map((key) => {
           return callStrikePrices[j][key]  
         })//end of optionData
-          let tempOption: OptionVar = {optionName:"temp", openIntrest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openIntrestChange: -1};
+          let tempOption: OptionVar = {optionName:"temp", openInterest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openInterestChange: -1};
           tempOption.optionName = optionData[0].description;
-          tempOption.openIntrest = optionData[0].openInterest;
+          tempOption.openInterest = optionData[0].openInterest;
           tempOption.volume = optionData[0].totalVolume;
           tempOption.inTheMoney = optionData[0].inTheMoney;
           tempOption.optionSymbol = optionData[0].symbol;
@@ -52,9 +52,9 @@ import {detectDuplicates} from "./detectDuplicates"
         const optionData = Object.keys(putStrikePrices[0]).map((key) => {
           return putStrikePrices[j][key]
         })//end of optionData
-          let tempOption: OptionVar = {optionName:"temp", openIntrest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openIntrestChange: -1}
+          let tempOption: OptionVar = {optionName:"temp", openInterest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openInterestChange: -1}
           tempOption.optionName = optionData[0].description;
-          tempOption.openIntrest = optionData[0].openInterest;
+          tempOption.openInterest = optionData[0].openInterest;
           tempOption.volume = optionData[0].totalVolume;
           tempOption.inTheMoney = optionData[0].inTheMoney;
           tempOption.optionSymbol = optionData[0].symbol;

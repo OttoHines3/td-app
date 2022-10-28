@@ -2,11 +2,11 @@
 export interface OptionVar {
     optionName: string;
     optionSymbol: string;
-    openIntrest: number;
+    openInterest: number;
     volume: number;
     inTheMoney: boolean;
     newOINumber: number;
-    openIntrestChange: number;
+    openInterestChange: number;
 
   }
 
