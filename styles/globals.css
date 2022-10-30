@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 html,
 body {
   padding: 0;
@@ -15,14 +19,31 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+ul.pagination {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  gap: 0.5rem;
+  margin-top: 1rem;
+
+}
+li {
+  display: inline-block;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  background-color: #fff;
+  
+}
+li.previous.disabled {
+  border: 1px solid #ccc;
+
+}
+li.active {
+  background-color: #e2e8f0;
+  border-radius: 0.25rem;
+
 }
 
 .table{
