@@ -115,7 +115,7 @@ function App(){
   const [pageCount, setPageCount] = useState(0);
   const [perPage] = useState(10);
   const fetchData = async () => {
-    const response = await axios.get<OptionVar[]>('http://localhost:3000/api/test/tester');
+    const response = await axios.get<OptionVar[]>('/api/test/tester');
     const data = response.data;
     const slice = data.slice(offset, offset + perPage)
 
