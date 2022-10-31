@@ -5,10 +5,19 @@ import {breakDownData} from "../../../utils/breakDownData"
 const dataReady = false;
   
 export async function getOptionData() {
-    //get Date for API call
-    let date: Date = new Date();
-    let x = date.getMonth() + 2;
-    const dateStr = String(date.getFullYear()) + '-' + String(x) + '-' + String(date.getDate());
+    //get a month from now
+    let monthFromNow: Date = new Date();
+    monthFromNow.setMonth(monthFromNow.getMonth() + 1);
+    //get day of month from now
+    let dayOfMonth: number = monthFromNow.getDate();
+    //get month of month from now
+    let month: number = monthFromNow.getMonth() + 1;
+    //get year of month from now
+    let year: number = monthFromNow.getFullYear();
+
+   
+    
+    const dateStr = String(year) + '-' + String(month) + '-' + String(dayOfMonth);
     console.log(dateStr);
 
     // Fetch data from external API

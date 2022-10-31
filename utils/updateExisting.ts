@@ -37,5 +37,5 @@ export async function updateExisting() {
 
      
 
-    return finalArr;
+    return [finalArr];
 }//end of updateExisting

@@ -2,46 +2,15 @@
 import flatten from 'lodash/flatten';
 import Pagination from './Pagination';
 
-const transactions = [
-    {
-      id: 'AAPS0L',
-      company: 'Chase & Co.',
-      share: 'CAC',
-      commission: '+$4.37',
-      price: '$3,509.00',
-      quantity: '12.00',
-      netAmount: '$4,397.00',
-    },
-    // More transactions...
-  ]
-
-  interface Transaction {
-    inTheMoney: boolean;
-    newOINumber: number;
-    openInterest: number;
-    openInterestChange: number;
-    optionName: any;
-    optionSymbol: string;
-    volume: number;
-
-  }
-
-
-  
   export default function CloseTable({data}: any) {
-
-    
-
-
-    
 
     return (
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
-            <h1 className="text-xl font-semibold text-gray-900">Transactions</h1>
+            <h1 className="text-xl font-semibold text-gray-900">Options Grinder</h1>
             <p className="mt-2 text-sm text-gray-700">
-              A table of placeholder stock market data that does not make any sense.
+              Not Finiancial Adivce. Use at your own risk.
             </p>
           </div>
           <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
@@ -64,19 +33,31 @@ const transactions = [
                         scope="col"
                         className="whitespace-nowrap py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6"
                       >
-                        Option Name
+                        Symbol
                       </th>
                       <th
                         scope="col"
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        New OI Number
+                        Expiration Date
                       </th>
                       <th
                         scope="col"
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Open Interest
+                        Strike Price
+                      </th>
+                      <th
+                        scope="col"
+                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Today's Open Interest
+                      </th>
+                      <th
+                        scope="col"
+                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
+                      >
+                        Yesterday's Open Interest
                       </th>
                       <th
                         scope="col"
@@ -88,37 +69,25 @@ const transactions = [
                         scope="col"
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Open Symbol
-                      </th>
-                      <th
-                        scope="col"
-                        className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
-                      >
                         Volume
-                      </th>
-                    
+                      </th> 
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 bg-white">
            
                     {data.map((data: any, idx: any) => (
-                      // <tr>
-                      //   {console.log(data.optionName)}
-                      //   {data.optionName}
-                      // </tr>
                       <tr key={Math.random() + idx}>
                         <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">
-                          {data.optionName}
+                          {data.optionName.substring(0,data.optionName.indexOf(' ')) + (data.optionName.substring(data.optionName.indexOf(' ')+16))}
                         </td>
                         <td className="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
-                          {data.newOINumber}
+                          {data.optionName.substring(data.optionName.indexOf(' ')+1,data.optionName.indexOf(' ')+12)}
                         </td>
-                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-900">{data.openInterest}</td>
-                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{data.openInterestChange}</td>
-                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{data.optionSymbol}</td>
-                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500">{data.volume}</td>
-
-                       
+                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-center">{data.strikePrice}</td>
+                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInteret}</td>
+                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.newOINumber}</td>
+                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInterestChange}</td>
+                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.volume}</td>
                       </tr>
                     ))}
                   </tbody>

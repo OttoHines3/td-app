@@ -11,7 +11,7 @@ import {detectDuplicates} from "./detectDuplicates"
  export function breakDownData(data: any, params: any){
     const { callExpDateMap } = data
     const { putExpDateMap } = data
-  
+    
     // get the Array of Expiration Dates for Calls and Puts 
     const callExpiries = Object.keys(callExpDateMap).map((key) => {
       return callExpDateMap[key]
@@ -30,13 +30,15 @@ import {detectDuplicates} from "./detectDuplicates"
         const optionData = Object.keys(callStrikePrices[0]).map((key) => {
           return callStrikePrices[j][key]  
         })//end of optionData
-          let tempOption: OptionVar = {optionName:"temp", openInterest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openInterestChange: -1};
+          
+          let tempOption: OptionVar = {optionName:"temp", openInterest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openInterestChange: -1, strikePrice: -1};
           tempOption.optionName = optionData[0].description;
           tempOption.openInterest = optionData[0].openInterest;
           tempOption.volume = optionData[0].totalVolume;
           tempOption.inTheMoney = optionData[0].inTheMoney;
           tempOption.optionSymbol = optionData[0].symbol;
-          if(!detectDuplicates(tempOption,FINALCALLARR)){
+          tempOption.strikePrice = optionData[0].strikePrice;
+          if(!detectDuplicates(tempOption,FINALCALLARR)) {
              FINALCALLARR.push(tempOption);
             //  console.log("FINALCALLARR: ", FINALCALLARR)
           }
@@ -52,12 +54,13 @@ import {detectDuplicates} from "./detectDuplicates"
         const optionData = Object.keys(putStrikePrices[0]).map((key) => {
           return putStrikePrices[j][key]
         })//end of optionData
-          let tempOption: OptionVar = {optionName:"temp", openInterest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openInterestChange: -1}
+          let tempOption: OptionVar = {optionName:"temp", openInterest:-1, volume:-1, inTheMoney:false, optionSymbol: "temp", newOINumber:-1, openInterestChange: -1, strikePrice: -1};
           tempOption.optionName = optionData[0].description;
           tempOption.openInterest = optionData[0].openInterest;
           tempOption.volume = optionData[0].totalVolume;
           tempOption.inTheMoney = optionData[0].inTheMoney;
           tempOption.optionSymbol = optionData[0].symbol;
+          tempOption.strikePrice = optionData[0].strikePrice;
           if(!detectDuplicates(tempOption, FINALPUTARR)) {
             FINALPUTARR.push(tempOption) 
             // console.log("FINALPUTARR: ",FINALPUTARR)

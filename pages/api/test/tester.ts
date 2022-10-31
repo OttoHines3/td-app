@@ -3,7 +3,7 @@ import { updateExisting } from "../../../utils/updateExisting";
 export default async function tester(req:any, res: any) {
    const data =  await updateExisting();
     try {
-         
+        //  console.log(data);
         res.status(200).json(data);
         return data;
     } 
