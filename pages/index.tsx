@@ -65,7 +65,6 @@ function App(){
         containerClassName={'pagination'}
         activeClassName={'active'}
       />
-     {/* <CommandPallete data={flattenedData}/> */}
     </div>
      
      );
