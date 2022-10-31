@@ -15,14 +15,15 @@ function App(){
   const [offset, setOffset] = useState(0);
   const [pageCount, setPageCount] = useState(0);
   const [perPage] = useState(10);
+
   const fetchData = async () => {
     const response = await axios.get<OptionVar[]>('/api/test/tester');
     const data = response.data;
     const slice = data.slice(offset, offset + perPage)
-
+    
     // setData(postData);
     // @ts-ignore
-    setData(slice)
+    setData(data)
     setPageCount(Math.ceil(data.length / perPage))
 
   };//end of fetchData
@@ -34,11 +35,11 @@ function App(){
 
   const handlePageClick = (e: any) => {
     const selectedPage = e.selected;
-    setOffset(selectedPage + 1);
+    setOffset(selectedPage + 10);
   };//end of handlePageClick
-
+  
   const flattenedData = flatten(data)
-
+  console.log(flattenedData);
   return(
 
     
@@ -49,10 +50,10 @@ function App(){
 
 
     
-      <CloseTable data={flattenedData} />
+      <CloseTable data={data} />
       
       </div>
-      <ReactPaginate
+      {/* <ReactPaginate
 
         previousLabel={'previous'}
         nextLabel={'next'}
@@ -64,7 +65,7 @@ function App(){
         onPageChange={handlePageClick}
         containerClassName={'pagination'}
         activeClassName={'active'}
-      />
+      /> */}
     </div>
      
      );

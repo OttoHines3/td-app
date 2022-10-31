@@ -51,13 +51,13 @@ import Pagination from './Pagination';
                         scope="col"
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Today's Open Interest
+                        Todays Open Interest
                       </th>
                       <th
                         scope="col"
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
-                        Yesterday's Open Interest
+                        Yesterdays Open Interest
                       </th>
                       <th
                         scope="col"
@@ -77,14 +77,14 @@ import Pagination from './Pagination';
            
                     {data.map((data: any, idx: any) => (
                       <tr key={Math.random() + idx}>
-                        <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6">
-                          {data.optionName.substring(0,data.optionName.indexOf(' ')) + (data.optionName.substring(data.optionName.indexOf(' ')+16))}
+                        <td className="whitespace-nowrap py-2 pl-4 pr-3 text-sm text-gray-500 sm:pl-6"> 
+                          {data.optionName.substring(0,data.optionName.indexOf(' ')) +  (data.optionName.substring(data.optionName.indexOf(' ')+16))}
                         </td>
                         <td className="whitespace-nowrap px-2 py-2 text-sm font-medium text-gray-900">
                           {data.optionName.substring(data.optionName.indexOf(' ')+1,data.optionName.indexOf(' ')+12)}
                         </td>
                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-center">{data.strikePrice}</td>
-                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInteret}</td>
+                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInterest}</td>
                          <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.newOINumber}</td>
                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInterestChange}</td>
                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.volume}</td>

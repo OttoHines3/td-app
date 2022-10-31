@@ -15,27 +15,54 @@ export async function updateExisting() {
     //remove layer of arrays
     let newCallInfo = newData.FINALCALLARR;
     let newPutInfo = newData.FINALPUTARR;
- 
+   if(currCallInfo.length !=  newCallInfo.length) {
+         console.log("hoessssss");
+   }
 
     for (let i = 0; i < currCallInfo.length; i++) {
-       if(currCallInfo[i].optionSymbol == newCallInfo[i].optionSymbol) {
-           currCallInfo[i].openIntrestChange = newCallInfo[i].openInterest - currCallInfo[i].openIntrest;
-           currCallInfo[i].newOINumber = newCallInfo[i].openInterest;
-       }//end of if
+        //find matching option in new data
+        let match = newCallInfo.find((option) => {
+            return option.optionSymbol == currCallInfo[i].optionSymbol;
+        });
+        if (match) {
+            //update openInterestChange and newOINumber
+            currCallInfo[i].openInterestChange = match.openInterest - currCallInfo[i].openInterest;
+            currCallInfo[i].newOINumber = match.openInterest;
+        }else {
+            console.log("no match");
+            currCallInfo[i].openInterestChange = -111111111111111111111;
 
-       if(currPutInfo[i].optionSymbol == newPutInfo[i].optionSymbol) {
-           currPutInfo[i].openIntrestChange = newPutInfo[i].openInterest - currPutInfo[i].openIntrest;
-           currPutInfo[i].newOINumber = newPutInfo[i].openInterest;
-       }//end of if
+            
+        }
+        //find matching option in new data
+        let match2 = newPutInfo.find((option) => {
+            return option.optionSymbol == currPutInfo[i].optionSymbol;
+        });
+
+        if (match2) {
+            //update openInterestChange and newOINumber
+            currPutInfo[i].openInterestChange = match2.openInterest - currPutInfo[i].openInterest;
+            currPutInfo[i].newOINumber = match2.openInterest;
+        }else{
+            console.log("no match");
+            currPutInfo[i].openInterestChange = -111111111111111111111;
+        }
         
     }//end of for
+
+    // //for loop to console log the changes
+    // for (let i = 0; i < currCallInfo.length; i++) {
+    //     console.log("currCallInfo[i].openInterestChange: ", currCallInfo[i].openInterestChange);
+        
+    // }//end of for
+  
 
     //combine arrays
     let finalArr = currCallInfo.concat(currPutInfo);
    
     // const solution ={currCallInfo, currPutInfo};
+    
+    
 
-     
-
-    return [finalArr];
+    return finalArr;
 }//end of updateExisting
