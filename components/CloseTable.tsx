@@ -13,7 +13,7 @@ import React, { useEffect, useState } from 'react';
       <div className="px-4 sm:px-6 lg:px-8">
         <div className="sm:flex sm:items-center">
           <div className="sm:flex-auto">
-            <h1 className="text-xl font-semibold text-gray-900">{data ? data[0].putOrCall : ""}S Options Grinder</h1>
+            <h1 className="text-xl font-semibold text-gray-900">{data[0] != undefined ? data[0].putOrCall+'S' : " "} Options Grinder</h1>
             <p className="mt-2 text-sm text-gray-700">
               Not Finiancial Adivce. Use at your own risk.
             </p>

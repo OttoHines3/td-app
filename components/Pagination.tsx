@@ -32,7 +32,7 @@ export default function Pagination({
       <ul className='flex pl-0 rounded list-none flex-wrap'>
         <li className="hidden md:-mt-px md:flex flex-wrap w-fit place-content-center">
           {pageNumbers.map((number) => (
-            <a
+            <a key={number}
               onClick={() => {
                 paginate(number);
               }}
