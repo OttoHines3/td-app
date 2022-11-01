@@ -1,6 +1,7 @@
 
 export interface OptionVar {
     optionName: string;
+    putOrCall: string;
     optionSymbol: string;
     strikePrice: number;
     openInterest: number;
@@ -8,6 +9,7 @@ export interface OptionVar {
     inTheMoney: boolean;
     newOINumber: number;
     openInterestChange: number;
+
 
   }
 

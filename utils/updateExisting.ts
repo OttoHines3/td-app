@@ -21,7 +21,7 @@ export async function updateExisting() {
 
     for (let i = 0; i < currCallInfo.length; i++) {
         //find matching option in new data
-        let match = newCallInfo.find((option) => {
+        let match = newCallInfo.find((option : any) => {
             return option.optionSymbol == currCallInfo[i].optionSymbol;
         });
         if (match) {
@@ -35,7 +35,7 @@ export async function updateExisting() {
             
         }
         //find matching option in new data
-        let match2 = newPutInfo.find((option) => {
+        let match2 = newPutInfo.find((option : any) => {
             return option.optionSymbol == currPutInfo[i].optionSymbol;
         });
 
