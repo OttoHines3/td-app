@@ -17,19 +17,19 @@ export default function Pagination({
     <div className='py-2 -mt-px flex flex-wrap  place-content-center'>
     <div className='w-20'>
       <p className='text-sm text-gray-700'>
-        <span className='font-medium'>
+        <span className='font-small'>
           {" "}
           {pageNumber * dataPerPage - 10}{" "}
         </span>
         to
-        <span className='font-medium'> {pageNumber * dataPerPage} </span>
+        <span className='font-small'> {pageNumber * dataPerPage} </span>
         of
-        <span className='font-medium'> {totalData} </span>
+        <span className='font-small'> {totalData} </span>
         results
       </p>
     </div>
-    <nav className='flex items-center justify-between border-t border-gray-200 px-4 sm:px-0 flex flex-wrap place-content-center'>
-      <ul className='flex pl-0 rounded list-none flex-wrap'>
+    <nav className=''>
+      <ul className=''>
         <li className="hidden md:-mt-px md:flex flex-wrap w-fit place-content-center">
           {pageNumbers.map((number) => (
             <a key={number}
@@ -39,8 +39,8 @@ export default function Pagination({
               href='#'
               className={
                 pageNumber === number
-                  ? "inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
-                  : "inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                  ? "hover:bg-gray-100 dark:border-gray-700 dark:text-gray-400 inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+                  : "hover:bg-gray-100 inline-flex items-center border-t-2 border-transparent px-4 pt-4 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
               }
             >
               {number}

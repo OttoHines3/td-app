@@ -59,6 +59,7 @@ export async function getOptionData() {
     return altData;
 }//end of getOptionData
 
+
 export default async function getAllOptions(req: any, res: any) {
     const data = await getOptionData();
     try {

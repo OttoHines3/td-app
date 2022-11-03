@@ -3,6 +3,8 @@ import flatten from 'lodash/flatten';
 import Pagination from './Pagination';
 import { OptionVar } from '../interfaces';
 import React, { useEffect, useState } from 'react';
+import {CSVLink} from 'react-csv'
+
 
 
   export default function CloseTable({data}: any) {
@@ -19,12 +21,7 @@ import React, { useEffect, useState } from 'react';
             </p>
           </div>
           <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none">
-            <button
-              type="button"
-              className="inline-flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 sm:w-auto"
-            >
-              Export
-            </button>
+            
           </div>
         </div>
         <div className="mt-8 flex flex-col">
@@ -69,8 +66,6 @@ import React, { useEffect, useState } from 'react';
                         className="whitespace-nowrap px-2 py-3.5 text-left text-sm font-semibold text-gray-900"
                       >
                         Open Interest Change
-                        {/* <a href="#"><svg xmlns="http://www.w3.org/2000/svg" className="ml-1 w-3 h-3" aria-hidden="true" fill="currentColor" viewBox="0 0 320 512"><path d="M27.66 224h264.7c24.6 0 36.89-29.78 19.54-47.12l-132.3-136.8c-5.406-5.406-12.47-8.107-19.53-8.107c-7.055 0-14.09 2.701-19.45 8.107L8.119 176.9C-9.229 194.2 3.055 224 27.66 224zM292.3 288H27.66c-24.6 0-36.89 29.77-19.54 47.12l132.5 136.8C145.9 477.3 152.1 480 160 480c7.053 0 14.12-2.703 19.53-8.109l132.3-136.8C329.2 317.8 316.9 288 292.3 288z"/></svg></a> */}
-
                       </th>
                       <th
                         scope="col"
@@ -91,8 +86,8 @@ import React, { useEffect, useState } from 'react';
                           {data.optionName.substring(data.optionName.indexOf(' ') + 1, data.optionName.indexOf(' ') + 12)}
                         </td> 
                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-900 text-center">{data.strikePrice}</td>
-                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInterest}</td>
-                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.newOINumber}</td>
+                        <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.newOINumber}</td>
+                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInterest}</td>
                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.openInterestChange}</td>
                         <td className="whitespace-nowrap px-2 py-2 text-sm text-gray-500 text-center">{data.volume}</td>
                       </tr>

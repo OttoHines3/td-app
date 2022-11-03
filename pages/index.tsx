@@ -1,15 +1,15 @@
 import { OptionVar } from '../interfaces'
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
-// import styled from 'styled-components'
 import CloseTable from '../components/CloseTable'
-import ReactPaginate from 'react-paginate'
-import { flatten } from 'lodash'
 import Header from '../components/Header'
 import Pagination from '../components/Pagination'
-
+import {CSVLink} from 'react-csv';
 
 function App(){
+  const today = new Date();
+  const filename = "options"  + today.toISOString() + ".csv";
+
   
   const [data, setData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
@@ -18,11 +18,8 @@ function App(){
   const [data2, setData2] = useState([]);
   const [pageNumber2, setPageNumber2] = useState(1);
   const [dataPerPage2] = useState(10);
+  const [allData, setAllData] = useState([]);
 
-  
-
-   
- 
 
   //fetch data on page load
   useEffect(() => {
@@ -41,6 +38,10 @@ function App(){
 
       // @ts-ignore
       setData2(data2)
+      setLoading(false);
+
+      // @ts-ignore
+      setAllData(data)
       setLoading(false);
   
     };//end of fetchData
@@ -76,10 +77,18 @@ function App(){
     currentData2 = data2.slice(indexOfFirstData2, indexOfLastData2);
   }
 
+
   return(
 
     <div className='bg-white'>
       <Header />
+      <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none" >
+        
+
+      <CSVLink data={allData} filename={filename} className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Export
+            </CSVLink>
+      </div>
       <div className='my-6 flex w-full justify-center '>
       <CloseTable className='position: absolute' data={currentData} />
       </div>
@@ -95,7 +104,7 @@ function App(){
       <CloseTable className='position: absolute' data={currentData2} />
       </div>
       <div>
-      <Pagination
+      <Pagination 
         dataPerPage={dataPerPage2}
         totalData={data2.length}
         paginate={paginate2}
