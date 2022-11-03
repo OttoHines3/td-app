@@ -3,7 +3,6 @@ import flatten from 'lodash/flatten';
 import Pagination from './Pagination';
 import { OptionVar } from '../interfaces';
 import React, { useEffect, useState } from 'react';
-import {CSVLink} from 'react-csv'
 
 
 
