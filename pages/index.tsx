@@ -4,7 +4,9 @@ import axios from 'axios'
 import CloseTable from '../components/CloseTable'
 import Header from '../components/Header'
 import Pagination from '../components/Pagination'
-import {CSVLink} from 'react-csv';
+// import {CSVLink} from 'react-csv';
+
+
 
 function App(){
   const today = new Date();
@@ -85,9 +87,9 @@ function App(){
       <div className="mt-4 sm:mt-0 sm:ml-16 sm:flex-none" >
         
 
-      <CSVLink data={allData} filename={filename} className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+      {/* <CSVLink target="_self" data={allData} filename={filename} className="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
               Export
-            </CSVLink>
+            </CSVLink> */}
       </div>
       <div className='my-6 flex w-full justify-center '>
       <CloseTable className='position: absolute' data={currentData} />
